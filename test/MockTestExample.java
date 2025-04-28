@@ -5,20 +5,26 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MockTestExample {
 
     @Test
-    public void testDownloadDocumentWithMock() {
-        // Create a mock of DocumentService
-        DocumentService docService = mock(DocumentService.class);
+    public void testMockPaymentInfo() {
+        // Create a mock of PaymentInfo
+        PaymentInfo mockPayment = mock(PaymentInfo.class);
 
-        // Define mock behavior
-        when(docService.downloadDocument("tax2023")).thenReturn("PDF Document Content");
+        // Define behavior: when validateCard() is called, return true
+        when(mockPayment.validateCard()).thenReturn(true);
 
-        // Call the mocked method
-        String result = docService.downloadDocument("tax2023");
+        // Define behavior: when makePayment() is called, return true
+        when(mockPayment.makePayment()).thenReturn(true);
 
-        // Verify the mock behavior
-        assertEquals("PDF Document Content", result);
+        // Call mocked methods
+        boolean isCardValid = mockPayment.validateCard();
+        boolean paymentStatus = mockPayment.makePayment();
 
-        // Optional: Verify that the method was called once
-        verify(docService, times(1)).downloadDocument("tax2023");
+        // Assertions
+        assertTrue(isCardValid);
+        assertTrue(paymentStatus);
+
+        // Verify interactions
+        verify(mockPayment, times(1)).validateCard();
+        verify(mockPayment, times(1)).makePayment();
     }
 }
