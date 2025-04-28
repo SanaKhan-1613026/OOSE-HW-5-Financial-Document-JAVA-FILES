@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Customer extends User {
 
 	private String name;
@@ -8,24 +10,33 @@ public class Customer extends User {
 	private String ssn;
 	private String address;
 
+	// Constructor for testing
+	public Customer(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	// Existing methods
 	public boolean verifySSN() {
-		// TODO - implement Customer.verifySSN
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param email
-	 * @param password
-	 */
 	public boolean login(String email, String password) {
-		// TODO - implement Customer.login
 		throw new UnsupportedOperationException();
 	}
 
 	public void updateProfile() {
-		// TODO - implement Customer.updateProfile
 		throw new UnsupportedOperationException();
 	}
-
 }
