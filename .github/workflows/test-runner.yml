@@ -19,8 +19,8 @@ jobs:
     - name: Compile Code
       run: |
         mkdir out
-        javac -cp ".:junit-platform-console-standalone-1.9.2.jar" -d out $(find ./src ./test -name "*.java")
+        javac -cp "./lib/*" -d out $(find . -name "*.java")
 
     - name: Run Tests
       run: |
-        java -jar junit-platform-console-standalone-1.9.2.jar --classpath out --scan-classpath
+        java -jar lib/junit-platform-console-standalone-1.9.2.jar --classpath out --scan-classpath
