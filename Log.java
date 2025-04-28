@@ -1,3 +1,4 @@
+import java.util.Date;
 public class Log {
 
 	private String logID;
