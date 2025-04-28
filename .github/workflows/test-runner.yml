@@ -1,0 +1,26 @@
+name: Run Java Unit Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Compile Code
+      run: |
+        mkdir out
+        javac -cp ".:junit-platform-console-standalone-1.9.2.jar" -d out $(find ./src ./test -name "*.java")
+
+    - name: Run Tests
+      run: |
+        java -jar junit-platform-console-standalone-1.9.2.jar --classpath out --scan-classpath
